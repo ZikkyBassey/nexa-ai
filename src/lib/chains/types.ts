@@ -71,7 +71,7 @@ export interface TransactionDetail {
   signer: string | null;
   accounts: string[];
   programs: string[];
-  instructions: { program: string; type: string; summary?: string }[];
+  instructions: { program: string; type: string; summary?: string | undefined }[];
   nativeTransfers: TransferLeg[];
   tokenTransfers: TransferLeg[];
   logs: string[];
