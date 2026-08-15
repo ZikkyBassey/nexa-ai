@@ -14,15 +14,15 @@ export interface SourceMeta {
   /** Where the data came from. "demo" must always be surfaced in the UI. */
   source: DataSource;
   /** Human readable reason when we fell back to demo data. */
-  note?: string;
+  note?: string | undefined;
   fetchedAt: string;
 }
 
 export interface TokenHolding {
   mint: string;
-  symbol?: string;
-  name?: string;
-  logoURI?: string;
+  symbol?: string | undefined;
+  name?: string | undefined;
+  logoURI?: string | undefined;
   amount: number;
   decimals: number;
   uiAmountString: string;
@@ -56,14 +56,14 @@ export interface TransferLeg {
   to: string | null;
   amount: number;
   symbol: string;
-  mint?: string;
+  mint?: string | undefined;
 }
 
 export interface TransactionDetail {
   chain: ChainId;
   signature: string;
   status: "success" | "failed";
-  error?: string | null;
+  error?: string | null | undefined;
   slot: number;
   blockTime: number | null;
   fee: number;
@@ -82,14 +82,14 @@ export interface TransactionDetail {
 export interface TokenDetail {
   chain: ChainId;
   mint: string;
-  name?: string;
-  symbol?: string;
-  logoURI?: string;
+  name?: string | undefined;
+  symbol?: string | undefined;
+  logoURI?: string | undefined;
   decimals: number;
   supply: number;
-  holders?: { address: string; amount: number; share: number }[];
+  holders?: undefined | { address: string; amount: number; share: number }[];
   activity: ActivityItem[];
-  market?: { priceUsd?: number; source?: string };
+  market?: { priceUsd?: number | undefined; source?: string | undefined } | undefined;
   meta: SourceMeta;
 }
 
