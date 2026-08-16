@@ -303,7 +303,7 @@ async function getTransaction(signature: string): Promise<TransactionDetail> {
       nativeTransfers,
       tokenTransfers,
       logs: tx.meta?.logMessages ?? [],
-      raw: tx,
+      raw: JSON.stringify(tx, null, 2),
       meta: liveMeta(),
     };
   } catch (error) {

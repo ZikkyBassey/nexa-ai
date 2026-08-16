@@ -75,7 +75,8 @@ export interface TransactionDetail {
   nativeTransfers: TransferLeg[];
   tokenTransfers: TransferLeg[];
   logs: string[];
-  raw: unknown;
+  /** Pretty-printed raw payload (string keeps it serializable across RPC). */
+  raw: string;
   meta: SourceMeta;
 }
 
