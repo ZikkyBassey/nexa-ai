@@ -142,3 +142,56 @@
     color: var(--color-foreground);
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Nexa design system — dark-first crypto intelligence palette          */
+/* ------------------------------------------------------------------ */
+
+:root,
+.dark {
+  --radius: 0.75rem;
+  --background: oklch(0.16 0.018 258);
+  --foreground: oklch(0.96 0.006 250);
+  --card: oklch(0.203 0.02 258);
+  --card-foreground: oklch(0.96 0.006 250);
+  --popover: oklch(0.203 0.02 258);
+  --popover-foreground: oklch(0.96 0.006 250);
+  --primary: oklch(0.79 0.16 170);
+  --primary-foreground: oklch(0.17 0.02 258);
+  --secondary: oklch(0.26 0.022 258);
+  --secondary-foreground: oklch(0.94 0.006 250);
+  --muted: oklch(0.25 0.02 258);
+  --muted-foreground: oklch(0.71 0.02 255);
+  --accent: oklch(0.62 0.18 285);
+  --accent-foreground: oklch(0.97 0.006 250);
+  --destructive: oklch(0.63 0.2 22);
+  --destructive-foreground: oklch(0.98 0.004 250);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.79 0.16 170);
+  --sidebar: oklch(0.18 0.018 258);
+  --sidebar-foreground: oklch(0.94 0.006 250);
+  --sidebar-primary: oklch(0.79 0.16 170);
+  --sidebar-primary-foreground: oklch(0.17 0.02 258);
+  --sidebar-accent: oklch(0.26 0.022 258);
+  --sidebar-accent-foreground: oklch(0.94 0.006 250);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.79 0.16 170);
+}
+
+@layer base {
+  body {
+    background:
+      radial-gradient(80rem 40rem at 50% -10rem, oklch(0.32 0.06 180 / 35%), transparent 70%),
+      var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility mono {
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+}
