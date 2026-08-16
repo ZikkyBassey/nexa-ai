@@ -99,7 +99,7 @@ export function demoTransaction(signature: string): TransactionDetail {
       },
     ],
     logs: ["Program Jupiter invoke [1]", "Program log: route", "Program Jupiter success"],
-    raw: { demo: true },
+    raw: JSON.stringify({ demo: true }, null, 2),
     meta: {
       source: "demo",
       note: "Live RPC unavailable — showing labelled demo data.",
