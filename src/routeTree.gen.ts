@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ChatRouteImport } from './routes/chat'
 import { Route as TokenMintRouteImport } from './routes/token.$mint'
 import { Route as TxSignatureRouteImport } from './routes/tx.$signature'
 import { Route as WalletAddressRouteImport } from './routes/wallet.$address'
@@ -17,6 +18,11 @@ import { Route as WalletAddressRouteImport } from './routes/wallet.$address'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChatRoute = ChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TokenMintRoute = TokenMintRouteImport.update({
@@ -37,12 +43,14 @@ const WalletAddressRoute = WalletAddressRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
   '/token/$mint': typeof TokenMintRoute
   '/tx/$signature': typeof TxSignatureRoute
   '/wallet/$address': typeof WalletAddressRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
   '/token/$mint': typeof TokenMintRoute
   '/tx/$signature': typeof TxSignatureRoute
   '/wallet/$address': typeof WalletAddressRoute
@@ -50,20 +58,29 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
   '/token/$mint': typeof TokenMintRoute
   '/tx/$signature': typeof TxSignatureRoute
   '/wallet/$address': typeof WalletAddressRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/token/$mint' | '/tx/$signature' | '/wallet/$address'
+  fullPaths:
+    '/' | '/chat' | '/token/$mint' | '/tx/$signature' | '/wallet/$address'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/token/$mint' | '/tx/$signature' | '/wallet/$address'
-  id: '__root__' | '/' | '/token/$mint' | '/tx/$signature' | '/wallet/$address'
+  to: '/' | '/chat' | '/token/$mint' | '/tx/$signature' | '/wallet/$address'
+  id:
+    | '__root__'
+    | '/'
+    | '/chat'
+    | '/token/$mint'
+    | '/tx/$signature'
+    | '/wallet/$address'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChatRoute: typeof ChatRoute
   TokenMintRoute: typeof TokenMintRoute
   TxSignatureRoute: typeof TxSignatureRoute
   WalletAddressRoute: typeof WalletAddressRoute
@@ -76,6 +93,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chat': {
+      id: '/chat'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof ChatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/token/$mint': {
@@ -104,6 +128,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChatRoute: ChatRoute,
   TokenMintRoute: TokenMintRoute,
   TxSignatureRoute: TxSignatureRoute,
   WalletAddressRoute: WalletAddressRoute,
