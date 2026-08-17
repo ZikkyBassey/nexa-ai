@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiRouteImport } from './routes/api'
 import { Route as ChatRouteImport } from './routes/chat'
 import { Route as ExploreRouteImport } from './routes/explore'
 import { Route as PricingRouteImport } from './routes/pricing'
@@ -20,6 +21,11 @@ import { Route as WalletAddressRouteImport } from './routes/wallet.$address'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiRoute = ApiRouteImport.update({
+  id: '/api',
+  path: '/api',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChatRoute = ChatRouteImport.update({
@@ -55,6 +61,7 @@ const WalletAddressRoute = WalletAddressRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api': typeof ApiRoute
   '/chat': typeof ChatRoute
   '/explore': typeof ExploreRoute
   '/pricing': typeof PricingRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api': typeof ApiRoute
   '/chat': typeof ChatRoute
   '/explore': typeof ExploreRoute
   '/pricing': typeof PricingRoute
@@ -74,6 +82,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api': typeof ApiRoute
   '/chat': typeof ChatRoute
   '/explore': typeof ExploreRoute
   '/pricing': typeof PricingRoute
@@ -85,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/api'
     | '/chat'
     | '/explore'
     | '/pricing'
@@ -94,6 +104,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/api'
     | '/chat'
     | '/explore'
     | '/pricing'
@@ -103,6 +114,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/api'
     | '/chat'
     | '/explore'
     | '/pricing'
@@ -113,6 +125,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiRoute: typeof ApiRoute
   ChatRoute: typeof ChatRoute
   ExploreRoute: typeof ExploreRoute
   PricingRoute: typeof PricingRoute
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api': {
+      id: '/api'
+      path: '/api'
+      fullPath: '/api'
+      preLoaderRoute: typeof ApiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/chat': {
@@ -177,6 +197,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiRoute: ApiRoute,
   ChatRoute: ChatRoute,
   ExploreRoute: ExploreRoute,
   PricingRoute: PricingRoute,
