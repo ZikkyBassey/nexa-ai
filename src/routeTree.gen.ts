@@ -15,6 +15,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ChatRouteImport } from './routes/chat'
 import { Route as ExploreRouteImport } from './routes/explore'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as WatchlistRouteImport } from './routes/watchlist'
 import { Route as TokenMintRouteImport } from './routes/token.$mint'
 import { Route as TxSignatureRouteImport } from './routes/tx.$signature'
 import { Route as WalletAddressRouteImport } from './routes/wallet.$address'
@@ -49,6 +50,11 @@ const PricingRoute = PricingRouteImport.update({
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WatchlistRoute = WatchlistRouteImport.update({
+  id: '/watchlist',
+  path: '/watchlist',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TokenMintRoute = TokenMintRouteImport.update({
   id: '/token/$mint',
   path: '/token/$mint',
@@ -72,6 +78,7 @@ export interface FileRoutesByFullPath {
   '/chat': typeof ChatRoute
   '/explore': typeof ExploreRoute
   '/pricing': typeof PricingRoute
+  '/watchlist': typeof WatchlistRoute
   '/token/$mint': typeof TokenMintRoute
   '/tx/$signature': typeof TxSignatureRoute
   '/wallet/$address': typeof WalletAddressRoute
@@ -83,6 +90,7 @@ export interface FileRoutesByTo {
   '/chat': typeof ChatRoute
   '/explore': typeof ExploreRoute
   '/pricing': typeof PricingRoute
+  '/watchlist': typeof WatchlistRoute
   '/token/$mint': typeof TokenMintRoute
   '/tx/$signature': typeof TxSignatureRoute
   '/wallet/$address': typeof WalletAddressRoute
@@ -95,6 +103,7 @@ export interface FileRoutesById {
   '/chat': typeof ChatRoute
   '/explore': typeof ExploreRoute
   '/pricing': typeof PricingRoute
+  '/watchlist': typeof WatchlistRoute
   '/token/$mint': typeof TokenMintRoute
   '/tx/$signature': typeof TxSignatureRoute
   '/wallet/$address': typeof WalletAddressRoute
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/chat'
     | '/explore'
     | '/pricing'
+    | '/watchlist'
     | '/token/$mint'
     | '/tx/$signature'
     | '/wallet/$address'
@@ -119,6 +129,7 @@ export interface FileRouteTypes {
     | '/chat'
     | '/explore'
     | '/pricing'
+    | '/watchlist'
     | '/token/$mint'
     | '/tx/$signature'
     | '/wallet/$address'
@@ -130,6 +141,7 @@ export interface FileRouteTypes {
     | '/chat'
     | '/explore'
     | '/pricing'
+    | '/watchlist'
     | '/token/$mint'
     | '/tx/$signature'
     | '/wallet/$address'
@@ -142,6 +154,7 @@ export interface RootRouteChildren {
   ChatRoute: typeof ChatRoute
   ExploreRoute: typeof ExploreRoute
   PricingRoute: typeof PricingRoute
+  WatchlistRoute: typeof WatchlistRoute
   TokenMintRoute: typeof TokenMintRoute
   TxSignatureRoute: typeof TxSignatureRoute
   WalletAddressRoute: typeof WalletAddressRoute
@@ -191,6 +204,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/watchlist': {
+      id: '/watchlist'
+      path: '/watchlist'
+      fullPath: '/watchlist'
+      preLoaderRoute: typeof WatchlistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/token/$mint': {
       id: '/token/$mint'
       path: '/token/$mint'
@@ -222,6 +242,7 @@ const rootRouteChildren: RootRouteChildren = {
   ChatRoute: ChatRoute,
   ExploreRoute: ExploreRoute,
   PricingRoute: PricingRoute,
+  WatchlistRoute: WatchlistRoute,
   TokenMintRoute: TokenMintRoute,
   TxSignatureRoute: TxSignatureRoute,
   WalletAddressRoute: WalletAddressRoute,
