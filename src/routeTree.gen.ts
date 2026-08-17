@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiRouteImport } from './routes/api'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ChatRouteImport } from './routes/chat'
+import { Route as ExploreRouteImport } from './routes/explore'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as WatchlistRouteImport } from './routes/watchlist'
+import { Route as TokenMintRouteImport } from './routes/token.$mint'
+import { Route as TxSignatureRouteImport } from './routes/tx.$signature'
+import { Route as WalletAddressRouteImport } from './routes/wallet.$address'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiRoute = ApiRouteImport.update({
+  id: '/api',
+  path: '/api',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChatRoute = ChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExploreRoute = ExploreRouteImport.update({
+  id: '/explore',
+  path: '/explore',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WatchlistRoute = WatchlistRouteImport.update({
+  id: '/watchlist',
+  path: '/watchlist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TokenMintRoute = TokenMintRouteImport.update({
+  id: '/token/$mint',
+  path: '/token/$mint',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TxSignatureRoute = TxSignatureRouteImport.update({
+  id: '/tx/$signature',
+  path: '/tx/$signature',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WalletAddressRoute = WalletAddressRouteImport.update({
+  id: '/wallet/$address',
+  path: '/wallet/$address',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api': typeof ApiRoute
+  '/auth': typeof AuthRoute
+  '/chat': typeof ChatRoute
+  '/explore': typeof ExploreRoute
+  '/pricing': typeof PricingRoute
+  '/watchlist': typeof WatchlistRoute
+  '/token/$mint': typeof TokenMintRoute
+  '/tx/$signature': typeof TxSignatureRoute
+  '/wallet/$address': typeof WalletAddressRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api': typeof ApiRoute
+  '/auth': typeof AuthRoute
+  '/chat': typeof ChatRoute
+  '/explore': typeof ExploreRoute
+  '/pricing': typeof PricingRoute
+  '/watchlist': typeof WatchlistRoute
+  '/token/$mint': typeof TokenMintRoute
+  '/tx/$signature': typeof TxSignatureRoute
+  '/wallet/$address': typeof WalletAddressRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api': typeof ApiRoute
+  '/auth': typeof AuthRoute
+  '/chat': typeof ChatRoute
+  '/explore': typeof ExploreRoute
+  '/pricing': typeof PricingRoute
+  '/watchlist': typeof WatchlistRoute
+  '/token/$mint': typeof TokenMintRoute
+  '/tx/$signature': typeof TxSignatureRoute
+  '/wallet/$address': typeof WalletAddressRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/api'
+    | '/auth'
+    | '/chat'
+    | '/explore'
+    | '/pricing'
+    | '/watchlist'
+    | '/token/$mint'
+    | '/tx/$signature'
+    | '/wallet/$address'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/api'
+    | '/auth'
+    | '/chat'
+    | '/explore'
+    | '/pricing'
+    | '/watchlist'
+    | '/token/$mint'
+    | '/tx/$signature'
+    | '/wallet/$address'
+  id:
+    | '__root__'
+    | '/'
+    | '/api'
+    | '/auth'
+    | '/chat'
+    | '/explore'
+    | '/pricing'
+    | '/watchlist'
+    | '/token/$mint'
+    | '/tx/$signature'
+    | '/wallet/$address'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiRoute: typeof ApiRoute
+  AuthRoute: typeof AuthRoute
+  ChatRoute: typeof ChatRoute
+  ExploreRoute: typeof ExploreRoute
+  PricingRoute: typeof PricingRoute
+  WatchlistRoute: typeof WatchlistRoute
+  TokenMintRoute: typeof TokenMintRoute
+  TxSignatureRoute: typeof TxSignatureRoute
+  WalletAddressRoute: typeof WalletAddressRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +169,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api': {
+      id: '/api'
+      path: '/api'
+      fullPath: '/api'
+      preLoaderRoute: typeof ApiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chat': {
+      id: '/chat'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof ChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/explore': {
+      id: '/explore'
+      path: '/explore'
+      fullPath: '/explore'
+      preLoaderRoute: typeof ExploreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/watchlist': {
+      id: '/watchlist'
+      path: '/watchlist'
+      fullPath: '/watchlist'
+      preLoaderRoute: typeof WatchlistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/token/$mint': {
+      id: '/token/$mint'
+      path: '/token/$mint'
+      fullPath: '/token/$mint'
+      preLoaderRoute: typeof TokenMintRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tx/$signature': {
+      id: '/tx/$signature'
+      path: '/tx/$signature'
+      fullPath: '/tx/$signature'
+      preLoaderRoute: typeof TxSignatureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wallet/$address': {
+      id: '/wallet/$address'
+      path: '/wallet/$address'
+      fullPath: '/wallet/$address'
+      preLoaderRoute: typeof WalletAddressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiRoute: ApiRoute,
+  AuthRoute: AuthRoute,
+  ChatRoute: ChatRoute,
+  ExploreRoute: ExploreRoute,
+  PricingRoute: PricingRoute,
+  WatchlistRoute: WatchlistRoute,
+  TokenMintRoute: TokenMintRoute,
+  TxSignatureRoute: TxSignatureRoute,
+  WalletAddressRoute: WalletAddressRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
