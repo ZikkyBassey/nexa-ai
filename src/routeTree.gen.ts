@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TxSignatureRouteImport } from './routes/tx.$signature'
 import { Route as WalletAddressRouteImport } from './routes/wallet.$address'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TxSignatureRoute = TxSignatureRouteImport.update({
+  id: '/tx/$signature',
+  path: '/tx/$signature',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WalletAddressRoute = WalletAddressRouteImport.update({
@@ -25,27 +31,31 @@ const WalletAddressRoute = WalletAddressRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/tx/$signature': typeof TxSignatureRoute
   '/wallet/$address': typeof WalletAddressRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/tx/$signature': typeof TxSignatureRoute
   '/wallet/$address': typeof WalletAddressRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/tx/$signature': typeof TxSignatureRoute
   '/wallet/$address': typeof WalletAddressRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/wallet/$address'
+  fullPaths: '/' | '/tx/$signature' | '/wallet/$address'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/wallet/$address'
-  id: '__root__' | '/' | '/wallet/$address'
+  to: '/' | '/tx/$signature' | '/wallet/$address'
+  id: '__root__' | '/' | '/tx/$signature' | '/wallet/$address'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  TxSignatureRoute: typeof TxSignatureRoute
   WalletAddressRoute: typeof WalletAddressRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tx/$signature': {
+      id: '/tx/$signature'
+      path: '/tx/$signature'
+      fullPath: '/tx/$signature'
+      preLoaderRoute: typeof TxSignatureRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/wallet/$address': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  TxSignatureRoute: TxSignatureRoute,
   WalletAddressRoute: WalletAddressRoute,
 }
 export const routeTree = rootRouteImport
