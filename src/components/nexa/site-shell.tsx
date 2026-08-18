@@ -58,6 +58,8 @@ export function SiteShell({
             </Link>
             <Link
               to="/chat"
+              search={{ q: undefined }}
+
               className="rounded-full bg-primary px-4 py-1.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
             >
               Try the agent
