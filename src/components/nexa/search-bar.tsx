@@ -37,7 +37,7 @@ export function SearchBar({
   return (
     <form onSubmit={submit} className="w-full">
       <div
-        className={`flex items-center gap-2 rounded-xl border border-border bg-card/80 backdrop-blur ${
+        className={`flex items-center gap-2 rounded-2xl border border-border bg-card/80 backdrop-blur transition-colors focus-within:border-primary/50 ${
           size === "lg" ? "p-2 pl-4" : "p-1.5 pl-3"
         }`}
       >
@@ -51,11 +51,16 @@ export function SearchBar({
             size === "lg" ? "py-2.5 text-base" : "py-1.5 text-sm"
           }`}
         />
-        <Button type="submit" size={size === "lg" ? "default" : "sm"}>
+        <Button
+          type="submit"
+          size={size === "lg" ? "default" : "sm"}
+          className="rounded-xl font-medium"
+        >
           Explore
         </Button>
       </div>
       {error ? <p className="mt-2 text-sm text-destructive">{error}</p> : null}
     </form>
   );
+
 }
